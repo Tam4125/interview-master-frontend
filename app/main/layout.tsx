@@ -1,8 +1,16 @@
+"use client"
+
 import React, {ReactNode} from 'react'
 import Link from "next/link";
 import Image from "next/image";
+import {useCurrentUser} from "@/lib/hooks";
+import {redirect} from "next/navigation";
 
 const RootLayout = ({children}: {children: ReactNode}) => {
+    const {user, loading} = useCurrentUser();
+    if (!user) {
+        redirect("/auth");
+    }
     return (
         <div className="root-layout">
             <nav>
