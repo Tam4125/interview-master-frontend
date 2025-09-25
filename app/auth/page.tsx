@@ -3,7 +3,7 @@
 import React, {useState} from 'react'
 import {AuthButton, FormField} from "@/components/FormComponents";
 import Notification from "@/components/Notification";
-import {redirect} from "next/navigation";
+import {useRouter} from "next/navigation";
 import {icons} from '@/constants/icons'
 import {loginUser, registUser} from "@/lib/api";
 
@@ -14,6 +14,8 @@ const AuthPage = () => {
     const [isSignUp, setIsSignUp] = useState(false);
     const [message, setMessage] = useState('');
     const [notiType, setNotiType] = useState("message");
+
+    const router = useRouter();
 
 
     const showMessage = (msg:string) => {
@@ -45,7 +47,7 @@ const AuthPage = () => {
             setNotiType("message");
             handleChangeStatus();
         } else {
-            redirect('/');
+            router.push('/main');
         }
     }
 

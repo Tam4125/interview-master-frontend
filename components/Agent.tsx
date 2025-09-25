@@ -83,10 +83,10 @@ export const Agent = ({interviewId}:{interviewId:string}) => {
             setPageLoading(false);
 
             if (response1.success) {
-                router.push(`/interview/${interviewId}/feedback`);
+                router.push(`/main/interview/${interviewId}/feedback`);
             } else {
                 console.log("Error saving feedback");
-                router.push("/");
+                router.push("/main");
             }
         }
 

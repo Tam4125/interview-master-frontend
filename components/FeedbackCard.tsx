@@ -84,7 +84,7 @@ const FeedbackCard = ({interviewId}:{interviewId:string}) => {
 
             <button
                 className="relative font-bold text-white rounded-full py-2 px-3 bg-dark-400 w-full hover:bg-white hover:text-dark-400 duration-500 cursor-pointer"
-                onClick={() => redirect('/')}
+                onClick={() => redirect('/main')}
             >Back to Dashboard</button>
 
 

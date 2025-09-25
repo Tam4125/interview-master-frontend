@@ -15,7 +15,7 @@ const InterviewCard = ({interview}: { interview:Interview}) => {
 
     const {feedback, loading:feedbackLoading} = useFeedback(interview.id);
     const normalizedType = /mix/gi.test(interview.type) ? 'Mixed' : interview.type;
-    const feedbackLink = feedback ? `/interview/${interview.id}/feedback` : `/interview/${interview.id}`;
+    const feedbackLink = feedback ? `/main/interview/${interview.id}/feedback` : `/main/interview/${interview.id}`;
 
     // use useEffect instead of assigning directly because of using Date.now() on the client
     useEffect(() => {
