@@ -58,7 +58,7 @@ export const fetchCurrentUser = async () => {
 
     if (!response.ok) {
         const errorText = await response.text();
-        console.error("❌ Failed request:", response.status,s errorText);
+        console.error("❌ Failed request:", response.status, errorText);
         throw new Error("Failed to get current user");
     }
 
