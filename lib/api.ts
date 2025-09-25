@@ -1,4 +1,3 @@
-import {error} from "next/dist/build/output/log";
 
 export const loginUser = async (email: string, password: string) => {
     try {
@@ -59,7 +58,7 @@ export const fetchCurrentUser = async () => {
 
     if (!response.ok) {
         const errorText = await response.text();
-        console.error("❌ Failed request:", response.status, errorText);
+        console.error("❌ Failed request:", response.status,s errorText);
         throw new Error("Failed to get current user");
     }
 

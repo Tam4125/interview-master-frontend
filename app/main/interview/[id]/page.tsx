@@ -10,7 +10,7 @@ const InterviewPage = async ({params}: InterviewPageProps) => {
     console.log("InterviewId: " + interviewId);
 
     if (!interviewId) {
-        redirect("/");
+        redirect("/main");
     }
 
 
