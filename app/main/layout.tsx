@@ -1,13 +1,25 @@
 "use client"
 
-import React, {ReactNode} from 'react'
+import React, {ReactNode, useEffect} from 'react'
 import Link from "next/link";
 import Image from "next/image";
+import {useCurrentUser} from "@/lib/hooks";
+import {useRouter} from "next/navigation";
+import UserButton from "@/components/UserButton";
 
 const RootLayout = ({children}: {children: ReactNode}) => {
+    const { user, loading } = useCurrentUser();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!loading && !user) {
+            router.replace("/auth"); // redirect if not signed in
+        }
+    }, [loading, user, router]);
+
     return (
         <div className="root-layout">
-            <nav>
+            <nav className="flex flex-row justify-between items-center">
                 <Link href="/main" className="flex items-center gap-2">
                     <div className="flex items-center justify-center size-10 rounded-full blue-gradient relative z-10">
                         <div className="size-full relative rounded-full">
@@ -16,6 +28,9 @@ const RootLayout = ({children}: {children: ReactNode}) => {
                     </div>
                     <h3>InterviewMaster</h3>
                 </Link>
+                <div>
+                    <UserButton/>
+                </div>
             </nav>
             {children}
         </div>

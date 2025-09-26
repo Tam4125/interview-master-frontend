@@ -48,6 +48,24 @@ export const registUser = async (username: string, email: string, password: stri
     }
 }
 
+export const logoutUser = async () => {
+    try {
+        const endpoint = `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/sign-out`;
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        const data = await response.json();
+        return data;
+    } catch (error:any) {
+        throw new Error(error.message || "Network error. Please try again.");
+    }
+}
+
 
 export const fetchCurrentUser = async () => {
     const endpoint = `${process.env.NEXT_PUBLIC_SERVER_URL}/users/me`;
