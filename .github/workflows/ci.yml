@@ -1,0 +1,39 @@
+name: Frontend CI (Next.js)
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint        # make sure you have lint script (eslint)
+
+      - name: Type check
+        run: npm run type-check  # or `tsc --noEmit` if you have it
+
+      - name: Run tests
+        run: npm test            # jest/vitest
+
+      - name: Build
+        run: npm run build
