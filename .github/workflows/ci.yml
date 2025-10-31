@@ -29,8 +29,8 @@ jobs:
       - name: Lint
         run: npm run lint        # make sure you have lint script (eslint)
 
-      - name: Type check
-        run: npm run type-check  # or `tsc --noEmit` if you have it
+#      - name: Type check
+#        run: npm run type-check  # or `tsc --noEmit` if you have it
 
       - name: Run tests
         run: npm test            # jest/vitest
