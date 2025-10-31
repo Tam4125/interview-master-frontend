@@ -33,6 +33,7 @@ export const useUserInterviews = () => {
         const loadInterviews = async () => {
             try {
                 const data = await fetchUserInterviews();
+                // @ts-ignore
                 const listOfInterviews: Interview[] = data.interviews.map(({_id, ...rest}) => ({...rest , id:_id}));
                 setInterviews(listOfInterviews);
             } catch (err) {
